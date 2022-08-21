@@ -1451,21 +1451,29 @@ static void bsp_event_handler(bsp_event_t event)
 
 /*
 UART PACKAGE:
-INDEX			DATA				NOTE
-0					0xEE				header
-1					0x??				length
-2					0x??				type
-n					DATA				data
+INDEX       DATA            NOTE
+0           0xEE            header
+1           0x??            length
+2           0x??            type
+n           DATA            data
 
 DATA PACKAGE:(type = 1)
 one key send
-INDEX 		DATA				NOTE
-0					0xXX				key
+INDEX   DATA        NOTE
+0       0xXX        key
 
 ex:
-0			1			2			3			
-0xEE	0x04	0x01	0x02	
+0       1       2       3   
+0xEE    0x04    0x01    0xXX    
 */
+
+void package_handle_send_one_key(uint8_t key)
+{
+    uint8_t* p_key = &key;
+    keys_send(1, p_key);
+}
+
+
 
 /**@brief   Function for handling app_uart events.
  *
@@ -1474,56 +1482,58 @@ ex:
  *          'new line' '\n' (hex 0x0A) or if the string has reached the maximum data length.
  */
 /**@snippet [Handling the data received over UART] */
-#define UART_PACKAGE_MAX_LENGTH		64
+#define UART_PACKAGE_MAX_LENGTH        64
 void uart_event_handle(app_uart_evt_t * p_event)
 {
     static uint8_t data_array[UART_PACKAGE_MAX_LENGTH];
     static uint8_t index = 0;
-    uint32_t       err_code;
+    //uint32_t       err_code;
 
     switch (p_event->evt_type)
     {
         case APP_UART_DATA_READY:
             UNUSED_VARIABLE(app_uart_get(&data_array[index]));
             
-						{
-								do {
-										// check header
-										if (index == 0) {
-												if (data_array[index] != 0xEE) {
-														index = 0;
-												} else {
-														index++;
-												}
-												break;
-										}
-										// check size
-										if (index == 1) {
-												if (data_array[index] == 0 || data_array[index] < 3) {
-														index = 0;
-												} else {
-														index++;
-												}
-												break;
-										}
-										
-										
-										if (index > 2) {
-												if (data_array[1] != (index + 1)) {
-														index++;
-												} else {
-													// TODO
-													index = 0;
-												}
-												break;
-										}
-										// not run
-										index = 0;
-								}while(false);
-						}
-						
+            {
+                do {
+                    // check header
+                    if (index == 0) {
+                        if (data_array[index] != 0xEE) {
+                            index = 0;
+                        } else {
+                            index++;
+                        }
+                        break;
+                    }
+                    
+                    // check size
+                    if (index == 1) {
+                        if (data_array[index] == 0 || data_array[index] < 3) {
+                            index = 0;
+                        } else {
+                            index++;
+                        }
+                        break;
+                    }
+                    
+                    if (index > 2) {
+                        if (data_array[1] != (index + 1)) {
+                            index++;
+                        } else {
+                            // TODO
+                            if (1 == data_array[2]){
+                                package_handle_send_one_key(data_array[3]);
+                            }
+                            index = 0;
+                        }
+                        break; 
+                    } 
+                    // not run 
+                    index = 0; 
+                }while(false);
+            }
 
-				/*
+/*
             if ((data_array[index - 1] == '\n') ||
                 (data_array[index - 1] == '\r') ||
                 (index >= m_ble_nus_max_data_len))
@@ -1548,7 +1558,7 @@ void uart_event_handle(app_uart_evt_t * p_event)
 
                 index = 0;
             }
-				*/
+*/
             break;
 
         case APP_UART_COMMUNICATION_ERROR:
@@ -1732,8 +1742,9 @@ int main(void)
     bool erase_bonds;
 
     // Initialize.
-		uart_init();
     log_init();
+    uart_init();
+    
     timers_init();
     buttons_leds_init(&erase_bonds);
     power_management_init();

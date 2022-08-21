@@ -507,29 +507,29 @@ e\s112\headers\nrf52 -I..\..\..\..\..\..\external\fprintf -I..\..\..\..\..\..\e
 xternal\segger_rtt -I..\..\..\..\..\..\external\utf_converter -I..\..\..\..\..\
 ..\integration\nrfx -I..\..\..\..\..\..\integration\nrfx\legacy -I..\..\..\..\.
 .\..\modules\nrfx -I..\..\..\..\..\..\modules\nrfx\drivers\include -I..\..\..\.
-.\..\..\modules\nrfx\hal -I..\config -I.\RTE\_nrf52810_xxaa -IC:\Users\yb\AppDa
-ta\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include -IC:\Users\yb\AppData\Loc
-al\Arm\Packs\NordicSemiconductor\nRF_DeviceFamilyPack\8.40.3\Device\Include --p
-redefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 537" --predefi
-ne="_RTE_ SETA 1" --predefine="NRF52810_XXAA SETA 1" --predefine="_RTE_ SETA 1"
- --predefine="APP_TIMER_V2 SETA 1" --predefine="APP_TIMER_V2_RTC1_ENABLED SETA 
-1" --predefine="BOARD_PCA10040 SETA 1" --predefine="CONFIG_GPIO_AS_PINRESET SET
-A 1" --predefine="DEVELOP_IN_NRF52832 SETA 1" --predefine="FLOAT_ABI_SOFT SETA 
-1" --predefine="NRF52810_XXAA SETA 1" --predefine="NRF52_PAN_74 SETA 1" --prede
-fine="NRFX_COREDEP_DELAY_US_LOOP_CYCLES SETA 3" --predefine="NRF_SD_BLE_API_VER
-SION SETA 7" --predefine="S112 SETA 1" --predefine="SOFTDEVICE_PRESENT SETA 1" 
+.\..\..\modules\nrfx\hal -I..\config -I.\RTE\_nrf52810_xxaa -IC:\Users\yangb\Ap
+pData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include -IC:\Users\yangb\AppDa
+ta\Local\Arm\Packs\NordicSemiconductor\nRF_DeviceFamilyPack\8.40.3\Device\Inclu
+de --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 537" --p
+redefine="_RTE_ SETA 1" --predefine="NRF52810_XXAA SETA 1" --predefine="_RTE_ S
+ETA 1" --predefine="APP_TIMER_V2 SETA 1" --predefine="APP_TIMER_V2_RTC1_ENABLED
+ SETA 1" --predefine="BOARD_PCA10040 SETA 1" --predefine="CONFIG_GPIO_AS_PINRES
+ET SETA 1" --predefine="DEVELOP_IN_NRF52832 SETA 1" --predefine="FLOAT_ABI_SOFT
+ SETA 1" --predefine="NRF52810_XXAA SETA 1" --predefine="NRF52_PAN_74 SETA 1" -
+-predefine="NRFX_COREDEP_DELAY_US_LOOP_CYCLES SETA 3" --predefine="NRF_SD_BLE_A
+PI_VERSION SETA 7" --predefine="S112 SETA 1" --predefine="SOFTDEVICE_PRESENT SE
 
 
 
 ARM Macro Assembler    Page 9 
 
 
---predefine="__HEAP_SIZE SETA 2048" --predefine="__STACK_SIZE SETA 2048" --cpre
-proc_opts=-DAPP_TIMER_V2,-DAPP_TIMER_V2_RTC1_ENABLED,-DBOARD_PCA10040,-DCONFIG_
-GPIO_AS_PINRESET,-DDEVELOP_IN_NRF52832,-DFLOAT_ABI_SOFT,-DNRF52810_XXAA,-DNRF52
-_PAN_74,-DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3,-DNRF_SD_BLE_API_VERSION=7,-DS112
-,-DSOFTDEVICE_PRESENT,-D__HEAP_SIZE=2048,-D__STACK_SIZE=2048 --list=.\_build\ar
-m_startup_nrf52810.lst RTE/Device/nRF52810_xxAA/arm_startup_nrf52810.s
+TA 1" --predefine="__HEAP_SIZE SETA 2048" --predefine="__STACK_SIZE SETA 2048" 
+--cpreproc_opts=-DAPP_TIMER_V2,-DAPP_TIMER_V2_RTC1_ENABLED,-DBOARD_PCA10040,-DC
+ONFIG_GPIO_AS_PINRESET,-DDEVELOP_IN_NRF52832,-DFLOAT_ABI_SOFT,-DNRF52810_XXAA,-
+DNRF52_PAN_74,-DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3,-DNRF_SD_BLE_API_VERSION=7,
+-DS112,-DSOFTDEVICE_PRESENT,-D__HEAP_SIZE=2048,-D__STACK_SIZE=2048 --list=.\_bu
+ild\arm_startup_nrf52810.lst RTE/Device/nRF52810_xxAA/arm_startup_nrf52810.s
 
 
 
